@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make ht",
+            "type": "shell",
+            "command": "make",
+            "args": ["ht"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+			"problemMatcher": [
+                "$gcc"
+            ],
+			"presentation": {
+				"clear": true,
+				"showReuseMessage": false
+			},
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+		{
+			"type": "shell",
+			"label": "Project: compile",
+			"command": "gcc",
+			"args": [
+				"-I",
+				"./include/",
+				"-L",
+				"./lib/",
+				"-Wl,-rpath,./lib/",
+				"./examples/ht_main.c",
+				"./src/record.c",
+				"./src/ht_table.c",
+				"-lbf",
+				"-o",
+				"./build/ht_main",
+				"-O2"
+
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"presentation": {
+				"clear": true,
+				"showReuseMessage": false
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+    ]
+}
